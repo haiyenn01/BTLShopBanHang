@@ -59,9 +59,9 @@
             <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td>
             <td>{{$pro->product_name}}</td>
             <td>{{$pro->product_price}}</td>
-            <td>{{$pro->product_image}}</td>
-            <td>{{$pro->category_id}}</td>
-            <td>{{$pro->brand_id}}</td>
+            <td><img src="public/upload/product/{{$pro->product_image}}" height="100" width="100"/></td>
+            <td>{{$pro->category_name}}</td>
+            <td>{{$pro->brand_name}}</td>
             <td><span class="text-ellipsis">
               <?php
                 if($pro->product_status==0){
@@ -80,7 +80,7 @@
               <a href="{{URL::to('/edit-product/'.$pro->product_id)}}" class="active" ui-toggle-class="">
                 <i class="fa fa-edit text-success text-active"></i>
               </a>
-              <a onclick="return confirm('Bạn có chắc là muốn xóa danh mục này không ?')" href="{{URL::to('/delete-brand-product/'.$brand_pro->brand_id)}}" class="active" ui-toggle-class="">
+              <a onclick="return confirm('Bạn có chắc là muốn xóa danh mục này không ?')" href="{{URL::to('/delete-product/'.$pro->product_id)}}" class="active" ui-toggle-class="">
                 <i class="fa fa-times text-danger text"></i>
               </a>
             </td>
