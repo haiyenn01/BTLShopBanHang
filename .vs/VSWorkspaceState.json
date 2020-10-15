@@ -1,6 +1,13 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\public",
+    "\\public\\fontend",
+    "\\resources",
+    "\\resources\\views",
+    "\\resources\\views\\admin",
+    "\\resources\\views\\pages"
   ],
+  "SelectedNode": "\\resources\\views\\admin\\add_brand_product.blade.php",
   "PreviewInSolutionExplorer": false
 }

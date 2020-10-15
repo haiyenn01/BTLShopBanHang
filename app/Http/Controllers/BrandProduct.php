@@ -52,7 +52,7 @@ class BrandProduct extends Controller
         $data = array(); 
         $data['brand_name'] = $request->brand_product_name;
         $data['brand_desc'] = $request->brand_product_desc;
-        Db::table('tbl_brand_product')->where('brand_id', $brand_product_id)->update($data);
+        Db::table('tbl_brand')->where('brand_id', $brand_product_id)->update($data);
         Session::put('message','Cập nhật thương hiệu sản phẩm thành công');
         return Redirect::to('all-brand-product');
     }

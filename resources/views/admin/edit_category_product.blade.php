@@ -17,12 +17,12 @@
 
   <div class="form-group">
     <label for="">Tên danh mục</label>
-    <input type="text" value='{{$edit_value->category_name}}' class="form-control" id="category-product-name" name="category_product_name" >
+    <input type="text" value='{{$edit_value->category_name}}' class="form-control"  name="category_product_name" >
   </div>
   
   <div class="form-group">
     <label for="">Mô tả</label>
-    <textarea class="form-control"  id="update-product-decreption" name="category_product_decreption" rows="3">{{$edit_value->category_desc}}</textarea>
+    <textarea class="form-control" name="category_product_desc" rows="3">{{$edit_value->category_desc}}</textarea>
   </div>
 
   
