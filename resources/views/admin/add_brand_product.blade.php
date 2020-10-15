@@ -5,7 +5,7 @@
     <div class="col-lg-12">
         <section class="panel">
             <header class="panel-heading">
-                            Thêm thương hiệu sản phẩm
+                            Thêm thương hiệu sản phẩm  qưeqw
             </header>
             <div class="panel-body">
                     <?php
