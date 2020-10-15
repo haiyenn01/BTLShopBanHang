@@ -17,9 +17,9 @@ class ProductController extends Controller
     }
 
     public function all_product(){
-        $all_brand_product = DB::table('tbl_brand')->get();
-        $manager_brand_product = view('admin.all_brand_product')->with('all_brand_product',$all_brand_product);
-        return view('admin_layout')->with('admin.all_brand_product',$manager_brand_product);
+        $all_product = DB::table('tbl_product')->orderby('product_id','desc')->get();
+        $manager_product = view('admin.all_product')->with('all_product',$all_product);
+        return view('admin_layout')->with('admin.all_product',$manager_product);
     }
 
     public function save_product(Request $request){
@@ -59,10 +59,13 @@ class ProductController extends Controller
         return Redirect::to('all-brand-product');
     }
 
-    public function edit_brand_product($brand_product_id){
-        $edit_brand_product = DB::table('tbl_brand')->where('brand_id',$brand_product_id)->get();
-        $manager_brand_product = view('admin.edit_brand_product')->with('edit_brand_product',$edit_brand_product);
-        return view('admin_layout')->with('admin.edit_brand_product',$manager_brand_product);
+    public function edit_product($product_id){
+       // $cate_product = DB::table('tbl_category_product')->orderby('category_id','desc')->get();
+        //$brand_product = DB::table('tbl_brand')->orderby('brand_id','desc')->get();
+
+        $edit_product = DB::table('tbl_product')->where('product_id',$product_id)->get();
+        $manager_product = view('admin.edit_product')->with('edit_product',$edit_product);
+        return view('admin_layout')->with('admin.edit_product',$manager_product);
     }
 
     public function update_brand_product(Request $request,$brand_product_id){
