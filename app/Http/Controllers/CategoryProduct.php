@@ -79,4 +79,12 @@ class CategoryProduct extends Controller
         Session::put('message','Xóa danh mục sản phẩm thành công');
         return Redirect::to('all-category-product');
     }
+
+    // end function admin page
+
+    public function show_category_home($category_id){
+        $cate_product = DB::table('tbl_category_product')->where('category_status','0')->orderby('category_id','desc')->get();
+        $brand_product = DB::table('tbl_brand')->where('brand_status','0')->orderby('brand_id','desc')->get();
+        return view('pages.category.show_category')->with('category', $cate_product)->with('brand',$brand_product);
+    }
 }
