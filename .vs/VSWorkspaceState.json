@@ -12,6 +12,6 @@
     "\\resources\\views\\pages",
     "\\routes"
   ],
-  "SelectedNode": "\\resources\\views\\admin\\all_product.blade.php",
+  "SelectedNode": "\\app\\Http\\Controllers\\ProductController.php",
   "PreviewInSolutionExplorer": false
 }
