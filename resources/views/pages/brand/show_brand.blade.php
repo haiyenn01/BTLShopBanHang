@@ -1,10 +1,10 @@
 @extends('layout')
 @section('content')
 <div class="features_items"><!--features_items-->
-                        @foreach($category_name as $key => $name)
-						<h2 class="title text-center"> {{$name->category_name}} </h2>
+						@foreach($brand_name as $key => $name)
+						<h2 class="title text-center"> {{$name->brand_name}} </h2>
                         @endforeach
-                        @foreach($category_by_id as $key =>$product )
+                         @foreach($brand_by_id as $key =>$product )
                          <a href="{{URL::to('chi-tiet-san-pham/'.$product->product_id)}}">
 						<div class="col-sm-4">
 							<div class="product-image-wrapper">
@@ -26,6 +26,6 @@
 							</div>
 						</div>
                         </a>
-                       @endforeach
+                        @endforeach
                     </div>
 @endsection
