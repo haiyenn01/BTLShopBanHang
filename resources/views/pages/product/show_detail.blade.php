@@ -1,10 +1,11 @@
 @extends('layout')
 @section('content')
 
-<div class="product-details"><!--product-details-->
+@foreach($details_product as $key => $value)
+                    <div class="product-details"><!--product-details-->
 						<div class="col-sm-5">
 							<div class="view-product">
-								<img src="{{URL::to('public/fontend/images/1.JPG')}}" alt="" />
+								<img src="{{URL::to('public/upload/product/'.$value->product_image)}}" alt="" />
 								<h3>ZOOM</h3>
 							</div>
 							<div id="similar-product" class="carousel slide" data-ride="carousel">
@@ -12,19 +13,19 @@
 								  <!-- Wrapper for slides -->
 								    <div class="carousel-inner">
 										<div class="item active">
-										  <a href=""><img src="{{URL::to('public/fontend/images/similar1.jpg')}}" alt=""></a>
-										  <a href=""><img src="{{URL::to('public/fontend/images/similar2.jpg')}}" alt=""></a>
-										  <a href=""><img src="{{URL::to('public/fontend/images/similar3.jpg')}}" alt=""></a>
+										  <a href=""><img src="{{URL::to('public/upload/product/images/similar1.jpg')}}" alt=""></a>
+										  <a href=""><img src="{{URL::to('public/upload/product/images/similar2.jpg')}}" alt=""></a>
+										  <a href=""><img src="{{URL::to('public/upload/product/images/similar3.jpg')}}" alt=""></a>
 										</div>
 										<div class="item">
-										  <a href=""><img src="{{URL::to('public/fontend/images/similar1.jpg')}}" alt=""></a>
-										  <a href=""><img src="{{URL::to('public/fontend/images/similar2.jpg')}}" alt=""></a>
-										  <a href=""><img src="{{URL::to('public/fontend/images/similar3.jpg')}}" alt=""></a>
+										  <a href=""><img src="{{URL::to('public/upload/product/images/similar1.jpg')}}" alt=""></a>
+										  <a href=""><img src="{{URL::to('public/upload/product/images/similar2.jpg')}}" alt=""></a>
+										  <a href=""><img src="{{URL::to('public/upload/product/images/similar3.jpg')}}" alt=""></a>
 										</div>
 										<div class="item">
-										  <a href=""><img src="{{URL::to('public/fontend/images/similar1.jpg')}}" alt=""></a>
-										  <a href=""><img src="{{URL::to('public/fontend/images/similar2.jpg')}}" alt=""></a>
-										  <a href=""><img src="{{URL::to('public/fontend/images/similar3.jpg')}}" alt=""></a>
+										  <a href=""><img src="{{URL::to('public/upload/product/images/similar1.jpg')}}" alt=""></a>
+										  <a href=""><img src="{{URL::to('public/upload/product/images/similar2.jpg')}}" alt=""></a>
+										  <a href=""><img src="{{URL::to('public/upload/product/images/similar3.jpg')}}" alt=""></a>
 										</div>
 										
 									</div>
@@ -41,10 +42,10 @@
 						</div>
 						<div class="col-sm-7">
 							<div class="product-information"><!--/product-information-->
-								<img src="{{URL::to('public/fontend/images/new.jpg')}}" class="newarrival" alt="" />
+								<img src="{{URL::to('public/upload/product/images/new.jpg')}}" class="newarrival" alt="" />
 								<h2>Anne Klein Sleeveless Colorblock Scuba</h2>
 								<p>Web ID: 1089772</p>
-								<img src="{{URL::to('public/fontend/images/rating.png')}}" alt="" />
+								<img src="{{URL::to('public/upload/product/images/rating.png')}}" alt="" />
 								<span>
 									<span>US $59</span>
 									<label>Quantity:</label>
@@ -57,10 +58,12 @@
 								<p><b>Availability:</b> In Stock</p>
 								<p><b>Condition:</b> New</p>
 								<p><b>Brand:</b> E-SHOPPER</p>
-								<a href=""><img src="{{URL::to('public/fontend/images/share.png')}}" class="share img-responsive"  alt="" /></a>
+								<a href=""><img src="{{URL::to('public/upload/product/images/share.png')}}" class="share img-responsive"  alt="" /></a>
 							</div><!--/product-information-->
 						</div>
-					</div><!--/product-details-->
+				</div><!--/product-details-->
+@endforeach
+
                     <div class="category-tab shop-details-tab"><!--category-tab-->
 						<div class="col-sm-12">
 							<ul class="nav nav-tabs">
@@ -75,7 +78,7 @@
 									<div class="product-image-wrapper">
 										<div class="single-products">
 											<div class="productinfo text-center">
-												<img src="{{URL::to('public/fontend/images/gallery1.jpg')}}" alt="" />
+												<img src="{{URL::to('public/upload/product/images/gallery1.jpg')}}" alt="" />
 												<h2>$56</h2>
 												<p>Easy Polo Black Edition</p>
 												<button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Thêm giỏ hàng</button>
@@ -102,7 +105,7 @@
 											<input type="email" placeholder="Email Address"/>
 										</span>
 										<textarea name="" ></textarea>
-										<b>Rating: </b> <img src="{{URL::to('public/fontend/images/rating.png')}}" alt="" />
+										<b>Rating: </b> <img src="{{URL::to('public/upload/product/images/rating.png')}}" alt="" />
 										<button type="button" class="btn btn-default pull-right">
 											Submit
 										</button>
@@ -122,7 +125,7 @@
 										<div class="product-image-wrapper">
 											<div class="single-products">
 												<div class="productinfo text-center">
-													<img src="{{URL::to('public/fontend/images/recommend1.jpg')}}" alt="" />
+													<img src="{{URL::to('public/upload/product/images/recommend1.jpg')}}" alt="" />
 													<h2>$56</h2>
 													<p>Easy Polo Black Edition</p>
 													<button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Thêm giỏ hàng</button>
@@ -133,7 +136,7 @@
 										<div class="product-image-wrapper">
 											<div class="single-products">
 												<div class="productinfo text-center">
-													<img src="{{URL::to('public/fontend/images/recommend1.jpg')}}" alt="" />
+													<img src="{{URL::to('public/upload/product/images/recommend1.jpg')}}" alt="" />
 													<h2>$56</h2>
 													<p>Easy Polo Black Edition</p>
 													<button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Thêm giỏ hàng</button>
@@ -144,7 +147,7 @@
 										<div class="product-image-wrapper">
 											<div class="single-products">
 												<div class="productinfo text-center">
-													<img src="{{URL::to('public/fontend/images/recommend1.jpg')}}" alt="" />
+													<img src="{{URL::to('public/upload/product/images/recommend1.jpg')}}" alt="" />
 													<h2>$56</h2>
 													<p>Easy Polo Black Edition</p>
 													<button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Thêm giỏ hàng</button>
@@ -158,7 +161,7 @@
 										<div class="product-image-wrapper">
 											<div class="single-products">
 												<div class="productinfo text-center">
-													<img src="{{URL::to('public/fontend/images/recommend1.jpg')}}" alt="" />
+													<img src="{{URL::to('public/upload/product/images/recommend1.jpg')}}" alt="" />
 													<h2>$56</h2>
 													<p>Easy Polo Black Edition</p>
 													<button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Thêm giỏ hàng</button>
@@ -169,7 +172,7 @@
 										<div class="product-image-wrapper">
 											<div class="single-products">
 												<div class="productinfo text-center">
-													<img src="{{URL::to('public/fontend/images/recommend1.jpg')}}" alt="" />
+													<img src="{{URL::to('public/upload/product/images/recommend1.jpg')}}" alt="" />
 													<h2>$56</h2>
 													<p>Easy Polo Black Edition</p>
 													<button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Thêm giỏ hàng</button>
@@ -180,7 +183,7 @@
 										<div class="product-image-wrapper">
 											<div class="single-products">
 												<div class="productinfo text-center">
-													<img src="{{URL::to('public/fontend/images/recommend1.jpg')}}" alt="" />
+													<img src="{{URL::to('public/upload/product/images/recommend1.jpg')}}" alt="" />
 													<h2>$56</h2>
 													<p>Easy Polo Black Edition</p>
 													<button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Thêm giỏ hàng</button>
