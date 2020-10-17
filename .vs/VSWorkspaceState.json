@@ -5,13 +5,12 @@
     "\\app\\Http",
     "\\app\\Http\\Controllers",
     "\\public",
-    "\\public\\upload",
-    "\\public\\upload\\product",
     "\\resources",
     "\\resources\\views",
     "\\resources\\views\\pages",
+    "\\resources\\views\\pages\\category",
     "\\routes"
   ],
-  "SelectedNode": "\\app\\Http\\Controllers\\ProductController.php",
+  "SelectedNode": "\\app\\Http\\Controllers\\CategoryProduct.php",
   "PreviewInSolutionExplorer": false
 }
