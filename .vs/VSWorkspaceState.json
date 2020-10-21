@@ -1,16 +1,11 @@
 {
   "ExpandedNodes": [
     "",
-    "\\public",
-    "\\public\\fontend",
-    "\\public\\upload",
-    "\\resources",
+    "\\config",
     "\\resources\\views",
     "\\resources\\views\\pages",
-    "\\resources\\views\\pages\\brand",
-    "\\resources\\views\\pages\\category",
-    "\\resources\\views\\pages\\product"
+    "\\resources\\views\\pages\\brand"
   ],
-  "SelectedNode": "\\resources\\views\\pages\\category\\show_category.blade.php",
+  "SelectedNode": "\\config\\app.php",
   "PreviewInSolutionExplorer": false
 }
