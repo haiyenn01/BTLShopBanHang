@@ -1,7 +1,7 @@
 @extends('layout')
 @section('content')
 
-@foreach($details_product as $key => $value)
+@foreach($product_details as $key => $value)
                     <div class="product-details"><!--product-details-->
 						<div class="col-sm-5">
 							<div class="view-product">
@@ -17,17 +17,6 @@
 										  <a href=""><img src="{{URL::to('public/upload/product/images/similar2.jpg')}}" alt=""></a>
 										  <a href=""><img src="{{URL::to('public/upload/product/images/similar3.jpg')}}" alt=""></a>
 										</div>
-										<div class="item">
-										  <a href=""><img src="{{URL::to('public/upload/product/images/similar1.jpg')}}" alt=""></a>
-										  <a href=""><img src="{{URL::to('public/upload/product/images/similar2.jpg')}}" alt=""></a>
-										  <a href=""><img src="{{URL::to('public/upload/product/images/similar3.jpg')}}" alt=""></a>
-										</div>
-										<div class="item">
-										  <a href=""><img src="{{URL::to('public/upload/product/images/similar1.jpg')}}" alt=""></a>
-										  <a href=""><img src="{{URL::to('public/upload/product/images/similar2.jpg')}}" alt=""></a>
-										  <a href=""><img src="{{URL::to('public/upload/product/images/similar3.jpg')}}" alt=""></a>
-										</div>
-										
 									</div>
 
 								  <!-- Controls -->
@@ -42,54 +31,58 @@
 						</div>
 						<div class="col-sm-7">
 							<div class="product-information"><!--/product-information-->
-								<img src="{{URL::to('public/upload/product/images/new.jpg')}}" class="newarrival" alt="" />
-								<h2>Anne Klein Sleeveless Colorblock Scuba</h2>
-								<p>Web ID: 1089772</p>
-								<img src="{{URL::to('public/upload/product/images/rating.png')}}" alt="" />
+								<img src="{{URL::to('public/upload/product/images/'.$value->product_image)}}" class="newarrival" alt="" />
+								<h2>{{$value->product_name}}</h2>
+								<p> Mã SP : {{$value->product_id}}</p>
+								<img src="{{URL::to('public/upload/product/images/'.$value->product_image)}}" alt="" />
+
+                                <form action="{{URL::to('/save-cart')}}" method="POST">
+                                {{csrf_field()}}
 								<span>
-									<span>US $59</span>
-									<label>Quantity:</label>
-									<input type="text" value="3" />
-									<button type="button" class="btn btn-fefault cart">
+									<span>{{number_format($value->product_price).' '.'VND'}}</span>
+									<label>Số lượng :</label>
+									<input name="qty" type="number" min="1" value="1" />
+									<input name="productid_hidden" type="hidden"  value="{{$value->product_id}}" />
+									<button type="submit" class="btn btn-fefault cart">
 										<i class="fa fa-shopping-cart"></i>
 										Thêm giỏ hàng
 									</button>
 								</span>
-								<p><b>Availability:</b> In Stock</p>
-								<p><b>Condition:</b> New</p>
-								<p><b>Brand:</b> E-SHOPPER</p>
+                                </form>
+								<p><b>Tình trạng :</b> Còn hàng</p>
+								<p><b>Điều kiện :</b> Mới 100%</p>
+								<p><b>Thương hiệu :</b>  {{$value->brand_name}}</p>
+								<p><b>Danh mục :</b>  {{$value->category_name}}</p>
 								<a href=""><img src="{{URL::to('public/upload/product/images/share.png')}}" class="share img-responsive"  alt="" /></a>
 							</div><!--/product-information-->
 						</div>
 				</div><!--/product-details-->
-@endforeach
+
+
 
                     <div class="category-tab shop-details-tab"><!--category-tab-->
 						<div class="col-sm-12">
 							<ul class="nav nav-tabs">
-								<li><a href="#details" data-toggle="tab">Chi tiết </a></li>
-								<li><a href="#companyprofile" data-toggle="tab">Hồ sơ công ty</a></li>
-								<li class="active"><a href="#reviews" data-toggle="tab">Đánh giá (5)</a></li>
+								<li class="active"><a href="#details" data-toggle="tab">Mô tả sản phẩm </a></li>
+								<li><a href="#companyprofile" data-toggle="tab">Chi tiết sản phẩm</a></li>
+								<li ><a href="#reviews" data-toggle="tab">Đánh giá (5)</a></li>
 							</ul>
 						</div>
 						<div class="tab-content">
-							<div class="tab-pane fade" id="details" >
+							<div class="tab-pane fade active in" id="details" >
 								<div class="col-sm-3">
-									<div class="product-image-wrapper">
-										<div class="single-products">
-											<div class="productinfo text-center">
-												<img src="{{URL::to('public/upload/product/images/gallery1.jpg')}}" alt="" />
-												<h2>$56</h2>
-												<p>Easy Polo Black Edition</p>
-												<button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Thêm giỏ hàng</button>
-											</div>
-										</div>
-									</div>
+									<p>{!!$value->product_desc!!}</p>
+								</div>
+							</div>
+
+                            <div class="tab-pane fade" id="companyprofile" >
+								<div class="col-sm-3">
+                                    <p>{!!$value->product_content!!}</p>
 								</div>
 							</div>
 							
 							
-							<div class="tab-pane fade active in" id="reviews" >
+							<div class="tab-pane fade " id="reviews" >
 								<div class="col-sm-12">
 									<ul>
 										<li><a href=""><i class="fa fa-user"></i>EUGEN</a></li>
@@ -105,7 +98,7 @@
 											<input type="email" placeholder="Email Address"/>
 										</span>
 										<textarea name="" ></textarea>
-										<b>Rating: </b> <img src="{{URL::to('public/upload/product/images/rating.png')}}" alt="" />
+										<b>Rating: </b> <img src="{{URL::to('public/upload/product/images/'.$value->product_image)}}" alt="" />
 										<button type="button" class="btn btn-default pull-right">
 											Submit
 										</button>
@@ -115,82 +108,32 @@
 							
 						</div>
 					</div><!--/category-tab-->
+@endforeach
+
+
+
                     <div class="recommended_items"><!--recommended_items-->
-						<h2 class="title text-center">Sản phẩm gợi ý</h2>
+						<h2 class="title text-center">Sản phẩm liên quan</h2>
 						
 						<div id="recommended-item-carousel" class="carousel slide" data-ride="carousel">
 							<div class="carousel-inner">
-								<div class="item active">	
+								<div class="item active">
+                                @foreach($relate as $key =>$lienquan)
 									<div class="col-sm-4">
 										<div class="product-image-wrapper">
 											<div class="single-products">
-												<div class="productinfo text-center">
-													<img src="{{URL::to('public/upload/product/images/recommend1.jpg')}}" alt="" />
-													<h2>$56</h2>
-													<p>Easy Polo Black Edition</p>
-													<button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Thêm giỏ hàng</button>
-												</div>
-											</div>
-										</div>
-									</div><div class="col-sm-4">
-										<div class="product-image-wrapper">
-											<div class="single-products">
-												<div class="productinfo text-center">
-													<img src="{{URL::to('public/upload/product/images/recommend1.jpg')}}" alt="" />
-													<h2>$56</h2>
-													<p>Easy Polo Black Edition</p>
-													<button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Thêm giỏ hàng</button>
-												</div>
-											</div>
-										</div>
-									</div><div class="col-sm-4">
-										<div class="product-image-wrapper">
-											<div class="single-products">
-												<div class="productinfo text-center">
-													<img src="{{URL::to('public/upload/product/images/recommend1.jpg')}}" alt="" />
-													<h2>$56</h2>
-													<p>Easy Polo Black Edition</p>
-													<button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Thêm giỏ hàng</button>
-												</div>
+												<div class="single-products">
+										            <div class="productinfo text-center">
+											            <img src="{{URL::to('public/upload/product/'.$lienquan->product_image)}}" alt="" />
+											            <h2>{{number_format($lienquan->product_price).' '.'VND'}}</h2>
+											            <p>{{$lienquan->product_name}}</p>
+											            <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Thêm giỏ hàng</a>
+										            </div>
+								                </div>
 											</div>
 										</div>
 									</div>
-								</div>
-                                <div class="item">	
-									<div class="col-sm-4">
-										<div class="product-image-wrapper">
-											<div class="single-products">
-												<div class="productinfo text-center">
-													<img src="{{URL::to('public/upload/product/images/recommend1.jpg')}}" alt="" />
-													<h2>$56</h2>
-													<p>Easy Polo Black Edition</p>
-													<button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Thêm giỏ hàng</button>
-												</div>
-											</div>
-										</div>
-									</div><div class="col-sm-4">
-										<div class="product-image-wrapper">
-											<div class="single-products">
-												<div class="productinfo text-center">
-													<img src="{{URL::to('public/upload/product/images/recommend1.jpg')}}" alt="" />
-													<h2>$56</h2>
-													<p>Easy Polo Black Edition</p>
-													<button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Thêm giỏ hàng</button>
-												</div>
-											</div>
-										</div>
-									</div><div class="col-sm-4">
-										<div class="product-image-wrapper">
-											<div class="single-products">
-												<div class="productinfo text-center">
-													<img src="{{URL::to('public/upload/product/images/recommend1.jpg')}}" alt="" />
-													<h2>$56</h2>
-													<p>Easy Polo Black Edition</p>
-													<button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Thêm giỏ hàng</button>
-												</div>
-											</div>
-										</div>
-									</div>
+                                @endforeach
 								</div>
 							</div>
 							 <a class="left recommended-item-control" href="#recommended-item-carousel" data-slide="prev">
