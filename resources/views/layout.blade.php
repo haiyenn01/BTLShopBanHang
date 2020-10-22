@@ -16,13 +16,23 @@
     <!--[if lt IE 9]>
     <script src="js/html5shiv.js"></script>
     <script src="js/respond.min.js"></script>
-    <![endif]-->       
+    <![endif]-->
+    <script src='https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.js'></script>
+    <link href="https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css" rel="stylesheet" />
     <link rel="shortcut icon" href="{{{'public/fontend/images/ico/favicon.ico'}}}">
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{{{'public/fontend/images/ico/apple-touch-icon-144-precomposed.png'}}}">
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="{{{'public/fontend/images/ico/apple-touch-icon-114-precomposed.png'}}}">
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="{{{'public/fontend/images/ico/apple-touch-icon-72-precomposed.png'}}}">
     <link rel="apple-touch-icon-precomposed" href="{{{'public/fontend/images/ico/apple-touch-icon-57-precomposed.png'}}}">
+    <link rel="stylesheet" href="{{asset('public/fontend/css/MapBox.css')}}">
 </head><!--/head-->
+<style>
+    #map {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+</style>
 
 <body>
 	<header id="header"><!--header-->
@@ -203,7 +213,54 @@
 			</div>
 		</div>
 	</section><!--/slider-->
-	
+
+
+    <div class="information"
+        style="display: block;width: 50px;height: 100px;right: 20px;top: 40vh;position: fixed;z-index:1;">
+        <div class="item-infor" id='openMap'
+            style="cursor: pointer;position: absolute;width:48px;border-radius: 50%;background: aqua; transform: translateY(0);height: 48px;border:2px solid white;">
+            <i style="font-size: 2.6rem;color: white;margin: 0 auto;position: absolute;top: 50%;transform: translateY(-13px) translateX(67%);"
+                class="fas fa-map-marker-alt"></i>
+             </div>
+        </div>
+
+        {{--  map location --}}
+
+
+    <div class="" id="map-infor"
+        style="position: fixed;width:50vw;height: calc(70vh - 55px);top :10%; right: 0 ;z-index: 2;transform:translateX(0);transition: all 0.9s ease 0.1s;box-shadow: rgb(204, 204, 204) 5px 5px 5px;border: 1px solid #ccc;">
+        <div class='modal-title-x'
+            style="width: 100%;height: 30px;background: white;/* bottom: 100%; */;padding:5px 15px;   ">
+            Vị trí
+            <span onclick="closemap()"><i class='fa fa-times'
+                    style="right: 0;position: absolute;padding: 9px 13px;"></i></span>
+        </div>
+        <div class='modal-body-x' style="position:Relative;height: calc(100% - 30px);width:100%;">
+            <div style=" height:100% !important;width:100% !important;" id="map"></div>
+            <div id="M3D" onclick="M3D()">3D</div>
+            <div id="shop-position">
+                <select name="" id="">
+                    <option value="">Hà Nội</option>
+                    <option value="">Đà Nẵng</option>
+                    <option value="">TP Hồ Chí Minh</option>
+                </select>
+            </div>
+            <div id='vehicles-option'>
+                <select name="vehicles-obj" id="vehicles-obj">
+                    <option value=""><i class="fas fa-walking"></i></option>
+                    <option value=""><i class="fas fa-motorcycle"></i></option>
+                    <option value=""><i class="fas fa-truck-moving"></i></option>
+                    <option value=""><i class="fas fa-bicycle"></i></option>
+                </select>
+            </div>
+            <!-- Instruction -->
+            <div style="display: none;" id="instructions">hello</div>
+        </div>
+    </div>
+
+    {{-- end map location --}}
+
+
 	<section>
 		<div class="container">
 			<div class="row">
@@ -409,5 +466,19 @@
 	<script src="{{asset('public/fontend/js/price-range.js')}}"></script>
     <script src="{{asset('public/fontend/js/jquery.prettyPhoto.js')}}"></script>
     <script src="{{asset('public/fontend/js/main.js')}}"></script>
+
+    <script src="https://api.tiles.mapbox.com/mapbox.js/plugins/turf/v2.0.0/turf.min.js" charset="utf-8"></script>
+    <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v4.1.0/mapbox-gl-directions.js">
+    </script>
+    <link rel="stylesheet"
+        href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v4.1.0/mapbox-gl-directions.css"
+        type="text/css" />
+    <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.2.0/mapbox-gl-geocoder.min.js">
+    </script>
+    <link rel="stylesheet"
+        href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.2.0/mapbox-gl-geocoder.css"
+        type="text/css" />
+    <script>
+    <script src="{{asset('public/fontend/js/MapBox.js')}}"></script>
 </body>
 </html>
