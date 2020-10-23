@@ -59,8 +59,8 @@
                                 <div class="form-group">
                                 <label >Hiển thị </label>
                                 <select name="product_status" class="form-control input-lg m-bot15">
-                                    <option value="0">Ẩn </option>
-                                    <option value="1">Hiển thị </option>
+                                    <option value="0">Hiển thị </option>
+                                    <option value="1">Ẩn </option>
                                 </select>
                                 </div>
                                 <button type="submit" name="add_product" class="btn btn-info">Thêm danh mục</button>
