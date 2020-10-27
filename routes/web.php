@@ -67,3 +67,12 @@ Route::post('/update-product/{product_id}','App\Http\Controllers\ProductControll
 
 //cart
 Route::post('/save-cart','App\Http\Controllers\CartController@save_cart');
+Route::get('/show-cart','App\Http\Controllers\CartController@show_cart');
+Route::get('/delete-to-cart/{rowId}','App\Http\Controllers\CartController@delete_to_cart');
+
+Route::get('/increase-cart/{rowId}', 'App\Http\Controllers\CartController@increase_cart');
+Route::get('/reduce-cart/{rowId}', 'App\Http\Controllers\CartController@reduce_cart');
+
+
+// check out
+Route::get('/login-checkout','App\Http\Controllers\CheckoutController@login_checkout');

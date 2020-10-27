@@ -28,8 +28,27 @@
 </head><!--/head-->
 <style>
     #divMap{
-        height:100px;
+        width:100%;
+        height:250px;
     }
+      
+        .marker {
+            background-image: url('https://docs.mapbox.com/help/demos/custom-markers-gl-js/mapbox-icon.png');
+            background-size: cover;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+        
+        .mapboxgl-popup {
+            max-width: 200px;
+        }
+        
+        .mapboxgl-popup-content {
+            text-align: center;
+            font-family: 'Open Sans', sans-serif;
+        }
 </style>
 
 <body>
@@ -261,8 +280,21 @@
 							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,sed do eiusmod tempor</p>
 						</div>
 					</div>
-					<div class="col-sm-7">
-						<div class="col-sm-3">
+					<div class="col-sm-6">
+						<div class="col-sm-6">
+							<div class="video-gallery text-center">
+								<a href="#">
+									<div class="iframe-img">
+										<img src="{{{'public/fontend/images/iframe1.png'}}}" alt="" />
+									</div>
+									<div class="overlay-icon">
+										<i class="fa fa-play-circle-o"></i>
+									</div>
+								</a>
+								<p>Circle of Hands</p>
+								<h2>24 DEC 2014</h2>
+							</div>
+						</div><div class="col-sm-6">
 							<div class="video-gallery text-center">
 								<a href="#">
 									<div class="iframe-img">
@@ -276,32 +308,88 @@
 								<h2>24 DEC 2014</h2>
 							</div>
 						</div>
-						
-						<div class="col-sm-3">
-							<div class="video-gallery text-center">
-								<a href="#">
-									<div class="iframe-img">
-										<img src="{{{'public/fontend/images/iframe2.png'}}}" alt="" />
-									</div>
-									<div class="overlay-icon">
-										<i class="fa fa-play-circle-o"></i>
-									</div>
-								</a>
-								<p>Circle of Hands</p>
-								<h2>24 DEC 2014</h2>
-							</div>
-						</div>
 					</div>
-					<div class="col-sm-3">
-                    	<div class="video-gallery text-center">
-                            <div id="divMap">
-                            </div>
+					<div class="col-sm-4">
+                       <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v4.1.0/mapbox-gl-directions.js"></script>
+                        <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v4.1.0/mapbox-gl-directions.css" type="text/css"/>
+                        <div id="divMap">
                         </div>
+                       <script>
+                     mapboxgl.accessToken = 'pk.eyJ1IjoidXRjMTEzIiwiYSI6ImNrY2ZuZmdpZzBocnEycmsybjM0NHpkbTMifQ.9k2AZ1oRegNpkidYZfJ65w';
+
+                          var geojson = {
+                            'type': 'FeatureCollection',
+                            'features': [
+                              {
+                                'type': 'Feature',
+                                'geometry': {
+                                  'type': 'Point',
+                                  'coordinates': [105.8057662, 21.0183118]
+                                },
+                                'properties': {
+                                  'title': 'Eshop',
+                                  'description': '99 Nguyễn Chí Thanh, Đống Đa, Hà Nội'
+                                }
+                              },
+                              {
+                                'type': 'Feature',
+                                'geometry': {
+                                  'type': 'Point',
+                                  'coordinates': [108.1977789, 16.0539503]
+                                },
+                                'properties': {
+                                  'title': 'Eshop',
+                                  'description': '20 Lý Thường Kiệt, Quận Hải Châu, TP Đà Nẵng'
+                                }
+                              },
+                              {
+                                'type': 'Feature',
+                                'geometry': {
+                                  'type': 'Point',
+                                  'coordinates': [106.6898035, 10.773996]
+                                },
+                                'properties': {
+                                  'title': 'Eshop',
+                                  'description': '55B Nguyễn Thị Minh Khai, Phường Bến Thành, Quận 1, Thành phố Hồ Chí Minh, Việt Nam'
+                                }
+                              }
+                            ]
+                          };
+
+                          
+                       var map = new mapboxgl.Map({
+                                container: 'divMap',
+                                style: 'mapbox://styles/mapbox/streets-v11',
+                                center: [105.908203, 21.04349121680354],
+                                zoom: 3
+                            });
+                            map.addControl(new mapboxgl.FullscreenControl());
+                          /*  map.addControl(new MapboxDirections({
+                                                accessToken: mapboxgl.accessToken
+                                            }), 'top-left'); */ 
+                          geojson.features.forEach(function (marker) {
+                            var el = document.createElement('div');
+                            el.className = 'marker';
+
+                            new mapboxgl.Marker(el)
+                              .setLngLat(marker.geometry.coordinates)
+                              .setPopup(
+                                new mapboxgl.Popup({ offset: 25 })
+                                  .setHTML(
+                                    '<h3 style="color:red">' +
+                                      marker.properties.title +
+                                      '</h3><p style="fontsize:14px">' +
+                                      marker.properties.description +
+                                      '</p>'
+                                  )
+                              )
+                              .addTo(map);
+                          });
+                        </script>
 					</div>
 				</div>
 			</div>
 		</div>
-		
 		<div class="footer-widget">
 			<div class="container">
 				<div class="row">
@@ -387,7 +475,6 @@
 	<script src="{{asset('public/fontend/js/price-range.js')}}"></script>
     <script src="{{asset('public/fontend/js/jquery.prettyPhoto.js')}}"></script>
     <script src="{{asset('public/fontend/js/main.js')}}"></script>
-    <!--
     <script src="https://api.tiles.mapbox.com/mapbox.js/plugins/turf/v2.0.0/turf.min.js" charset="utf-8"></script>
     <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v4.1.0/mapbox-gl-directions.js">
     </script>
@@ -399,7 +486,7 @@
     <link rel="stylesheet"
         href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.2.0/mapbox-gl-geocoder.css"
         type="text/css" />
-        -->
+    <script>
     <script src="{{asset('public/fontend/js/MapBox.js')}}"></script>
 </body>
 </html>

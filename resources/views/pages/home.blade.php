@@ -1,6 +1,6 @@
 @extends('layout')
 @section('content')
-<div class="features_items"><!--features_items-->
+                    <div class="features_items">
 						<h2 class="title text-center">Sản phẩm mới nhất</h2>
                          @foreach($all_product as $key =>$product )
 						<div class="col-sm-4">
@@ -13,7 +13,6 @@
 											<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Thêm giỏ hàng</a>
 										</div>
 								</div>
-                              
 								<div class="choose">
 									<ul class="nav nav-pills nav-justified">
 										<li><a href="#"><i class="fa fa-plus-square"></i>yêu thích</a></li>
@@ -22,6 +21,6 @@
 								</div>
 							</div>
 						</div>
-                                  @endforeach
+                        @endforeach
                     </div>
 @endsection

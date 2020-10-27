@@ -1,13 +1,17 @@
 {
   "ExpandedNodes": [
     "",
-    "\\public",
+    "\\app",
+    "\\app\\Http",
+    "\\app\\Http\\Controllers",
     "\\resources",
     "\\resources\\views",
     "\\resources\\views\\pages",
+    "\\resources\\views\\pages\\cart",
     "\\resources\\views\\vendor",
-    "\\resources\\views\\vendor\\pagination"
+    "\\resources\\views\\vendor\\pagination",
+    "\\routes"
   ],
-  "SelectedNode": "\\resources\\views\\layout.blade.php",
+  "SelectedNode": "\\routes\\web.php",
   "PreviewInSolutionExplorer": false
 }
