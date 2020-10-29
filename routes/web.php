@@ -15,6 +15,8 @@ use Illuminate\Support\Facades\Route;
 // fontEnd
 Route::get('/','App\Http\Controllers\HomeController@index');
 Route::get('/trang-chu','App\Http\Controllers\HomeController@index');
+Route::post('/tim-kiem','App\Http\Controllers\HomeController@search');
+
 
 // danh muc san pham trang chu
 Route::get('/danh-muc-san-pham/{category_id}','App\Http\Controllers\CategoryProduct@show_category_home');
@@ -76,3 +78,9 @@ Route::get('/reduce-cart/{rowId}', 'App\Http\Controllers\CartController@reduce_c
 
 // check out
 Route::get('/login-checkout','App\Http\Controllers\CheckoutController@login_checkout');
+Route::get('/logout-checkout','App\Http\Controllers\CheckoutController@logout_checkout');
+Route::post('/add-customer','App\Http\Controllers\CheckoutController@add_customer');
+Route::post('/login-customer','App\Http\Controllers\CheckoutController@login_customer');
+Route::get('/checkout','App\Http\Controllers\CheckoutController@checkout');
+Route::post('/save-checkout-customer','App\Http\Controllers\CheckoutController@save_checkout_customer');
+

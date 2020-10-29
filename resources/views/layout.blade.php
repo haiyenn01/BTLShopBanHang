@@ -13,10 +13,8 @@
     <link href="{{asset('public/fontend/css/animate.css')}}" rel="stylesheet">
 	<link href="{{asset('public/fontend/css/main.css')}}" rel="stylesheet">
 	<link href="{{asset('public/fontend/css/responsive.css')}}" rel="stylesheet">
-    <!--[if lt IE 9]>
-    <script src="js/html5shiv.js"></script>
-    <script src="js/respond.min.js"></script>
-    <![endif]-->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
     <script src="https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.js"></script>
     <link href="https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css" rel="stylesheet" />
     <link rel="shortcut icon" href="{{{'public/fontend/images/ico/favicon.ico'}}}">
@@ -113,11 +111,24 @@
 					<div class="col-sm-8">
 						<div class="shop-menu pull-right">
 							<ul class="nav navbar-nav">
-								<li><a href="#"><i class="fa fa-user"></i> Account</a></li>
-								<li><a href="#"><i class="fa fa-star"></i> Wishlist</a></li>
-								<li><a href="checkout.html"><i class="fa fa-crosshairs"></i> Checkout</a></li>
-								<li><a href="cart.html"><i class="fa fa-shopping-cart"></i> Cart</a></li>
-								<li><a href="login.html"><i class="fa fa-lock"></i> Login</a></li>
+								<li><a href="{{URL::to('/login-checkout')}}"><i class="fa fa-user"></i> Tài khoản</a></li>
+								<li><a href="#"><i class="fa fa-star"></i> Yêu thích</a></li>
+								<li><a href="{{URL::to('/checkout')}}"><i class="fa fa-crosshairs"></i> Thanh toán</a></li>
+								<li><a href="{{URL::to('/show-cart')}}"></i> Giỏ hàng</a></li>
+								<?php
+                                    $customer_id =Session::get('customer_id');
+                                    if($customer_id!=NULL){
+                                ?>
+                                <li><a href="{{URL::to('/logout-checkout')}}"><i class="fa fa-lock"></i> Đăng xuất</a>
+                                </li>
+                                <?php
+                                    }else{
+                                ?>
+                                <li><a href="{{URL::to('/login-checkout')}}"><i class="fa fa-lock"></i> Đăng nhập</a>
+                                </li>
+                                <?php
+                                    }
+                                ?>
 							</ul>
 						</div>
 					</div>
@@ -128,7 +139,7 @@
 		<div class="header-bottom"><!--header-bottom-->
 			<div class="container">
 				<div class="row">
-					<div class="col-sm-9">
+					<div class="col-sm-8">
 						<div class="navbar-header">
 							<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
 								<span class="sr-only">Toggle navigation</span>
@@ -156,10 +167,14 @@
 							</ul>
 						</div>
 					</div>
-					<div class="col-sm-3">
+					<div class="col-sm-4">
+						<form action="{{URL::to('/tim-kiem')}}" method="POST">
+						{{csrf_field()}}
 						<div class="search_box pull-right">
-							<input type="text" placeholder="Search"/>
+							<input type="text" name="keywords_submit" placeholder="Tìm kiếm sản phẩm"/>
+							<button><i class="fa fa-search"></i></button>
 						</div>
+						</form>
 					</div>
 				</div>
 			</div>
