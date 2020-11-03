@@ -1,0 +1,64 @@
+{
+    "type": "FeatureCollection",
+    "features": [{
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [105.8057662, 21.0183118],
+                "zoom": 15.1,
+                "bearing": 150,
+                "pitch": 60
+            },
+            "properties": {
+                "image": "https://fptshop.com.vn/Content/images/shopImg/cuahang-1.jpg",
+                "title": "Eshop",
+                "description": "99 Nguyễn Chí Thanh, Đống Đa, Hà Nội"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [106.836729, 21.0501315],
+                "zoom": 13.5,
+                "bearing": 27,
+                "pitch": 45
+            },
+            "properties": {
+                "image": "https://i.ndh.vn/2012/09/05/4519585-1346809740.jpg",
+                "title": "Eshop",
+                "description": "210 Thái Hà , Đống Đa , Hà Nội"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [105.760174, 21.002302],
+                "zoom": 14.7,
+                "bearing": 180,
+                "pitch": 60
+            },
+            "properties": {
+                "image": "https://fptshop.com.vn/Uploads/images/huypv4/FPT%20Shop%20Ninh%20Thuan.jpg",
+                "title": "Eshop",
+                "description": "56 Tạ Quang Bửu, Hai Bà Trưng, Hà Nội"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [105.720363, 20.999044],
+                "zoom": 15.2,
+                "bearing": 90,
+                "pitch": 40
+            },
+            "properties": {
+                "image": "https://diadiemnghean.com/wp-content/uploads/2018/07/FPTshop-cau-giat.jpg",
+                "title": "Eshop",
+                "description": "3 Cầu Giấy, Đống Đa, Hà Nội"
+            }
+        }
+    ]
+}

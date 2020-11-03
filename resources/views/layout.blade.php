@@ -22,7 +22,12 @@
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="{{{'public/fontend/images/ico/apple-touch-icon-114-precomposed.png'}}}">
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="{{{'public/fontend/images/ico/apple-touch-icon-72-precomposed.png'}}}">
     <link rel="apple-touch-icon-precomposed" href="{{{'public/fontend/images/ico/apple-touch-icon-57-precomposed.png'}}}">
-    <link rel="stylesheet" href="{{asset('public/fontend/css/MapBox.css')}}">
+	<link rel="stylesheet" href="{{asset('public/fontend/css/MapBox.css')}}">
+	<script src='https://api.mapbox.com/mapbox-gl-js/v1.11.1/mapbox-gl.js'></script>
+						<link href='https://api.mapbox.com/mapbox-gl-js/v1.11.1/mapbox-gl.css' rel='stylesheet' />
+						<script src="https://ekmap.github.io/ekmap-client/dist/mapboxgl/ekmap-mapboxgl.js"></script>
+						<script src="https://ekmap.github.io/ekmap-client/examples/js/common.js"></script>
+						
 </head><!--/head-->
 <style>
     #divMap{
@@ -47,65 +52,285 @@
             text-align: center;
             font-family: 'Open Sans', sans-serif;
         }
+
+
+		/*  */
+		.dataTable {
+            overflow: auto;
+            height: calc(100vh - 20px);
+            background-color: #f2efe9;
+        }
+        
+        .filter-ctrl {
+            position: inherit;
+            top: 10px;
+            margin-left: 42%;
+            z-index: 1;
+        }
+        
+        td {
+            padding: 4px;
+        }
+        
+        .filter-ctrl input[type='text'] {
+            width: 100%;
+            border: 0;
+            background-color: #fff;
+            margin: 0;
+            padding: 10px;
+            box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1);
+            border-radius: 3px;
+            width: 250px;
+        }
+        
+        .rounded-rect {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 0 50px -25px black;
+        }
+        
+        .flex-center {
+            position: absolute;
+            display: flex;
+            justify-content: center;
+        }
+        
+        .flex-center.left {
+            left: 10px;
+        }
+        
+        .flex-center.right {
+            right: 0px;
+        }
+        
+        .sidebar-content {
+            position: absolute;
+            margin-top: 10px;
+            width: 100%;
+            height: 98%;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 32px;
+            color: gray;
+        }
+        
+        .sidbear-toggle {
+            position: absolute;
+            width: 1.3em;
+            height: 1.3em;
+            overflow: visible;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .sidbear-toggle.left {
+            right: -1.5em;
+        }
+        
+        .sidbear-toggle.right {
+            left: -1.5em;
+        }
+        
+        .sidbear-toggle:hover {
+            color: #0aa1cf;
+            cursor: pointer;
+        }
+        
+        .sidebar {
+            transition: transform 1s;
+            z-index: 1;
+            width: 500px;
+            height: 100%;
+        }
+        
+        .left.collapsed {
+            transform: translateX(-295px);
+            left: -205px;
+            ;
+        }
+        
+        .right.collapsed {
+            transform: translateX(295px);
+        }
+        
+        .kt-portlet {
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-flex: 1;
+            -ms-flex-positive: 1;
+            -webkit-box-orient: vertical;
+            -webkit-box-direction: normal;
+            -ms-flex-direction: column;
+            flex-direction: column;
+            -webkit-box-shadow: 0 0 13px 0 rgba(82, 63, 105, .05);
+            box-shadow: 0 0 13px 0 rgba(82, 63, 105, .05);
+            background-color: #fff;
+            margin-bottom: 10px;
+            border-radius: 4px;
+        }
+        
+        .kt-portlet .kt-portlet__body {
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-orient: vertical;
+            -webkit-box-direction: normal;
+            -ms-flex-direction: column;
+            flex-direction: column;
+            padding: 15px;
+            border-radius: 4px;
+            margin-bottom: -15px;
+        }
+        
+        .kt-portlet .kt-portlet__body.kt-portlet__body--fit {
+            padding: 0;
+        }
+        
+        .textTitle {
+            text-align: center;
+            font-size: 20px;
+            color: #646c9a;
+            font-weight: 600;
+            margin-bottom: 0px;
+            margin-top: 40px;
+        }
+        
+        .kt-widget19__text-appInfo {
+            font-size: 13px;
+            font-weight: 300;
+            font-family: Poppins;
+        }
+        
+        .btn-cont {
+            width: 83%;
+            color: #fff !important;
+        }
+        
+        .btn {
+            display: inline-block;
+            font-weight: 400;
+            color: #212529;
+            text-align: center;
+            vertical-align: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            background-color: transparent;
+            border: 1px solid transparent;
+            padding: .65rem 1rem;
+            font-size: 1rem;
+            line-height: 1.5;
+            border-radius: .25rem;
+            -webkit-transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, -webkit-box-shadow .15s ease-in-out;
+            transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, -webkit-box-shadow .15s ease-in-out;
+            transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+            transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out, -webkit-box-shadow .15s ease-in-out;
+        }
+        
+        .btn-lg {
+            padding: 1.15rem 1.65rem;
+            font-size: 1.25rem;
+            line-height: 1.5;
+            border-radius: .3rem;
+            text-decoration: unset;
+        }
+        
+        .kt-widget19__wrapper {
+            background-color: #fff;
+            border-radius: 4px;
+            padding: 1rem;
+        }
+        
+        .item-container {
+            border: 1px solid #ebedf2;
+            padding: 10px 15px;
+        }
+        
+        .item-image {
+            max-width: 8.5rem;
+            margin-right: .5rem;
+            border-radius: 4px;
+            cursor: pointer;
+            -o-object-fit: cover;
+            object-fit: cover;
+            height: 8.5rem;
+            width: 8.5rem;
+        }
+        
+        .item-name a {
+            font-size: 1.1rem;
+            font-weight: 400;
+            color: #595d6e;
+            text-decoration: unset;
+        }
+        
+        .form-group {
+            display: flex;
+        }
+        
+        .col {
+            width: 100%;
+        }
+        
+        .img_select {
+            padding-right: 10px;
+        }
+        
+        .item-image-container {
+            width: 40%;
+        }
+        
+        .kt-widget19 {
+            height: calc(100vh - 40px);
+        }
+        
+        .scrollbar {
+            overflow-y: auto;
+        }
+        
+        #style-3::-webkit-scrollbar-track {
+            box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+            background-color: #F5F5F5;
+        }
+        
+        #style-3::-webkit-scrollbar {
+            width: 6px;
+            background-color: #F5F5F5;
+        }
+        
+        #style-3::-webkit-scrollbar-thumb {
+            background-color: #9b9dad;
+        }
+        
+        .col-form-label {
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: #595d6e;
+        }
+        
+        .font-des {
+            font-size: 13px;
+            font-weight: 300;
+            color: #646c9a;
+            font-family: Poppins;
+        }
+      .slide1{
+          width: 90%;
+          height: 200px;
+          margin:center;
+      }
 </style>
 
 <body>
 	<header id="header"><!--header-->
-		<div class="header_top"><!--header_top-->
-			<div class="container">
-				<div class="row">
-					<div class="col-sm-6">
-						<div class="contactinfo">
-							<ul class="nav nav-pills">
-								<li><a href="#"><i class="fa fa-phone"></i> +2 95 01 88 821</a></li>
-								<li><a href="#"><i class="fa fa-envelope"></i> info@domain.com</a></li>
-							</ul>
-						</div>
-					</div>
-					<div class="col-sm-6">
-						<div class="social-icons pull-right">
-							<ul class="nav navbar-nav">
-								<li><a href="#"><i class="fa fa-facebook"></i></a></li>
-								<li><a href="#"><i class="fa fa-twitter"></i></a></li>
-								<li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-								<li><a href="#"><i class="fa fa-dribbble"></i></a></li>
-								<li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-							</ul>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div><!--/header_top-->
-		
 		<div class="header-middle"><!--header-middle-->
 			<div class="container">
 				<div class="row">
 					<div class="col-sm-4">
 						<div class="logo pull-left">
-							<a href="index.html"><img src="{{{'public/fontend/images/logo.png'}}}" alt="" /></a>
-						</div>
-						<div class="btn-group pull-right">
-							<div class="btn-group">
-								<button type="button" class="btn btn-default dropdown-toggle usa" data-toggle="dropdown">
-									USA
-									<span class="caret"></span>
-								</button>
-								<ul class="dropdown-menu">
-									<li><a href="#">Canada</a></li>
-									<li><a href="#">UK</a></li>
-								</ul>
-							</div>
-							
-							<div class="btn-group">
-								<button type="button" class="btn btn-default dropdown-toggle usa" data-toggle="dropdown">
-									DOLLAR
-									<span class="caret"></span>
-								</button>
-								<ul class="dropdown-menu">
-									<li><a href="#">Canadian Dollar</a></li>
-									<li><a href="#">Pound</a></li>
-								</ul>
-							</div>
+							<a href="index.html"><img src="{{URL::to('public/fontend/images/logo1.png')}}"  /></a>
 						</div>
 					</div>
 					<div class="col-sm-8">
@@ -189,48 +414,27 @@
 						<ol class="carousel-indicators">
 							<li data-target="#slider-carousel" data-slide-to="0" class="active"></li>
 							<li data-target="#slider-carousel" data-slide-to="1"></li>
-							<li data-target="#slider-carousel" data-slide-to="2"></li>
+                            <li data-target="#slider-carousel" data-slide-to="2"></li>
+                            <li data-target="#slider-carousel" data-slide-to="3"></li>
+							<li data-target="#slider-carousel" data-slide-to="4"></li>
 						</ol>
 						
 						<div class="carousel-inner">
 							<div class="item active">
-								<div class="col-sm-6">
-									<h1><span>E</span>-SHOPPER</h1>
-									<h2>Free E-Commerce Template</h2>
-									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
-									<button type="button" class="btn btn-default get">Get it now</button>
-								</div>
-								<div class="col-sm-6">
-									<img src="{{{'public/fontend/images/girl1.jpg'}}}" class="girl img-responsive" alt="" />
-									<img src="{{{'public/fontend/images//pricing.png'}}}"  class="pricing" alt="" />
-								</div>
+								<img src="{{URL::to('public/fontend/images/slide1.jpg')}}" class="slide1" alt="" />
 							</div>
 							<div class="item">
-								<div class="col-sm-6">
-									<h1><span>E</span>-SHOPPER</h1>
-									<h2>100% Responsive Design</h2>
-									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
-									<button type="button" class="btn btn-default get">Get it now</button>
-								</div>
-								<div class="col-sm-6">
-									<img src="{{{'public/fontend/images/girl2.jpg'}}}" class="girl img-responsive" alt="" />
-									<img src="{{{'public/fontend/images/pricing.png'}}}"  class="pricing" alt="" />
-								</div>
+								<img src="{{URL::to('public/fontend/images/slide2.jpg')}}" class="slide1" alt="" />
 							</div>
-							
 							<div class="item">
-								<div class="col-sm-6">
-									<h1><span>E</span>-SHOPPER</h1>
-									<h2>Free Ecommerce Template</h2>
-									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
-									<button type="button" class="btn btn-default get">Get it now</button>
-								</div>
-								<div class="col-sm-6">
-									<img src="{{{'public/fontend/images/girl3.jpg'}}}" class="girl img-responsive" alt="" />
-									<img src="{{{'public/fontend/images/pricing.png'}}}" class="pricing" alt="" />
-								</div>
+								<img src="{{URL::to('public/fontend/images/slide3.jpg')}}" class="slide1" alt="" />
+                            </div>
+                            <div class="item">
+								<img src="{{URL::to('public/fontend/images/slide4.jpg')}}" class="slide1" alt="" />
 							</div>
-							
+							<div class="item">
+								<img src="{{URL::to('public/fontend/images/slide5.jpg')}}" class="slide1" alt="" />
+							</div>
 						</div>
 						
 						<a href="#slider-carousel" class="left control-carousel hidden-xs" data-slide="prev">
@@ -261,7 +465,6 @@
 							</div>
                     @endforeach
 						</div>
-                   
                         <!--/category-products-->
 					
 						<div class="brands_products"><!--brands_products-->
@@ -289,119 +492,41 @@
 		<div class="footer-top">
 			<div class="container">
 				<div class="row">
-					<div class="col-sm-2">
-						<div class="companyinfo">
-							<h2><span>e</span>-shopper</h2>
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,sed do eiusmod tempor</p>
-						</div>
-					</div>
-					<div class="col-sm-6">
-						<div class="col-sm-6">
-							<div class="video-gallery text-center">
-								<a href="#">
-									<div class="iframe-img">
-										<img src="{{{'public/fontend/images/iframe1.png'}}}" alt="" />
+					<div id="divMapId" style="width: 100%; height:400px">	
+					<div id="left" class="sidebar flex-center left collapsed">
+						<div class="sidebar-content rounded-rect flex-center">
+							<div class="kt-portlet kt-widget19 scrollbar" id="style-3" style="margin-bottom: 0px;background-color: #f2f3f8;">
+								<div class="kt-portlet__body kt-padding-0">
+									<div class="kt-widget19__wrapper">
+										<div class="kt-widget19__pic kt-portlet-fit--top kt-portlet-fit--sides branding-image">
+											<img alt="" style="width: 100%; height: 50%;display: block;" src="{{URL::to('public/fontend/images/logo1.png')}}" alt="#">
+										</div>
+										<div class="kt-widget19__content">
+											<div class="kt-widget19__info">
+												<p class="textTitle"> Chuỗi cửa hàng cung ứng của FPT </p>
+											</div>
+										</div><br>
+										<line-clamp row="6" _nghost-lti-c12="">
+											<div _ngcontent-lti-c12="" class="box" style="-webkit-line-clamp: initial; height: auto; visibility: visible;">
+												<div class="kt-widget19__text-appInfo">
+													<p>Trụ sở chính :Tòa nhà FPT, số 17 phố Duy Tân, phường Dịch Vọng Hậu, quận Cầu Giấy, thành phố Hà Nội</p>
+												</div>
+												<a _ngcontent-lti-c12="" class="btn-toggle" href="javascript:void(0)"><i
+														_ngcontent-lti-c12="" class="flaticon2-up"></i></a>
+											</div>
+										</line-clamp>
 									</div>
-									<div class="overlay-icon">
-										<i class="fa fa-play-circle-o"></i>
-									</div>
-								</a>
-								<p>Circle of Hands</p>
-								<h2>24 DEC 2014</h2>
+								</div>
+								<div class="kt-portlet__body kt-padding-0 " id="listData">
+									
+								</div>
 							</div>
-						</div><div class="col-sm-6">
-							<div class="video-gallery text-center">
-								<a href="#">
-									<div class="iframe-img">
-										<img src="{{{'public/fontend/images/iframe1.png'}}}" alt="" />
-									</div>
-									<div class="overlay-icon">
-										<i class="fa fa-play-circle-o"></i>
-									</div>
-								</a>
-								<p>Circle of Hands</p>
-								<h2>24 DEC 2014</h2>
+							<div class="sidbear-toggle rounded-rect left" onclick="toggleSidebar('left')">
+								&rarr;
 							</div>
 						</div>
-					</div>
-					<div class="col-sm-4">
-                       <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v4.1.0/mapbox-gl-directions.js"></script>
-                        <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v4.1.0/mapbox-gl-directions.css" type="text/css"/>
-                        <div id="divMap">
-                        </div>
-                       <script>
-                     mapboxgl.accessToken = 'pk.eyJ1IjoidXRjMTEzIiwiYSI6ImNrY2ZuZmdpZzBocnEycmsybjM0NHpkbTMifQ.9k2AZ1oRegNpkidYZfJ65w';
-
-                          var geojson = {
-                            'type': 'FeatureCollection',
-                            'features': [
-                              {
-                                'type': 'Feature',
-                                'geometry': {
-                                  'type': 'Point',
-                                  'coordinates': [105.8057662, 21.0183118]
-                                },
-                                'properties': {
-                                  'title': 'Eshop',
-                                  'description': '99 Nguyễn Chí Thanh, Đống Đa, Hà Nội'
-                                }
-                              },
-                              {
-                                'type': 'Feature',
-                                'geometry': {
-                                  'type': 'Point',
-                                  'coordinates': [108.1977789, 16.0539503]
-                                },
-                                'properties': {
-                                  'title': 'Eshop',
-                                  'description': '20 Lý Thường Kiệt, Quận Hải Châu, TP Đà Nẵng'
-                                }
-                              },
-                              {
-                                'type': 'Feature',
-                                'geometry': {
-                                  'type': 'Point',
-                                  'coordinates': [106.6898035, 10.773996]
-                                },
-                                'properties': {
-                                  'title': 'Eshop',
-                                  'description': '55B Nguyễn Thị Minh Khai, Phường Bến Thành, Quận 1, Thành phố Hồ Chí Minh, Việt Nam'
-                                }
-                              }
-                            ]
-                          };
-
-                          
-                       var map = new mapboxgl.Map({
-                                container: 'divMap',
-                                style: 'mapbox://styles/mapbox/streets-v11',
-                                center: [105.908203, 21.04349121680354],
-                                zoom: 3
-                            });
-                            map.addControl(new mapboxgl.FullscreenControl());
-                          /*  map.addControl(new MapboxDirections({
-                                                accessToken: mapboxgl.accessToken
-                                            }), 'top-left'); */ 
-                          geojson.features.forEach(function (marker) {
-                            var el = document.createElement('div');
-                            el.className = 'marker';
-
-                            new mapboxgl.Marker(el)
-                              .setLngLat(marker.geometry.coordinates)
-                              .setPopup(
-                                new mapboxgl.Popup({ offset: 25 })
-                                  .setHTML(
-                                    '<h3 style="color:red">' +
-                                      marker.properties.title +
-                                      '</h3><p style="fontsize:14px">' +
-                                      marker.properties.description +
-                                      '</p>'
-                                  )
-                              )
-                              .addTo(map);
-                          });
-                        </script>
-					</div>
+            		</div>
+				</div>
 				</div>
 			</div>
 		</div>
@@ -490,18 +615,6 @@
 	<script src="{{asset('public/fontend/js/price-range.js')}}"></script>
     <script src="{{asset('public/fontend/js/jquery.prettyPhoto.js')}}"></script>
     <script src="{{asset('public/fontend/js/main.js')}}"></script>
-    <script src="https://api.tiles.mapbox.com/mapbox.js/plugins/turf/v2.0.0/turf.min.js" charset="utf-8"></script>
-    <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v4.1.0/mapbox-gl-directions.js">
-    </script>
-    <link rel="stylesheet"
-        href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v4.1.0/mapbox-gl-directions.css"
-        type="text/css" />
-    <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.2.0/mapbox-gl-geocoder.min.js">
-    </script>
-    <link rel="stylesheet"
-        href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.2.0/mapbox-gl-geocoder.css"
-        type="text/css" />
-    <script>
-    <script src="{{asset('public/fontend/js/MapBox.js')}}"></script>
+	<script src="{{asset('public/fontend/js/MapBox.js')}}"></script>
 </body>
 </html>

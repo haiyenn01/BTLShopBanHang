@@ -5,12 +5,13 @@
     "\\app\\Http",
     "\\app\\Http\\Controllers",
     "\\database",
-    "\\database\\migrations",
     "\\resources",
     "\\resources\\views",
+    "\\resources\\views\\admin",
     "\\resources\\views\\pages",
-    "\\resources\\views\\pages\\cart"
+    "\\resources\\views\\pages\\cart",
+    "\\resources\\views\\pages\\category"
   ],
-  "SelectedNode": "\\database\\migrations\\2020_10_28_174001_tbl_shipping.php",
+  "SelectedNode": "\\app\\Http\\Controllers\\CategoryProduct.php",
   "PreviewInSolutionExplorer": false
 }

@@ -133,7 +133,7 @@
 											</div>
 										</div>
 									</div>
-                                @endforeach
+								@endforeach
 								</div>
 							</div>
 							 <a class="left recommended-item-control" href="#recommended-item-carousel" data-slide="prev">
@@ -144,4 +144,6 @@
 							  </a>			
 						</div>
 					</div><!--/recommended_items-->
+					{{ $relate->links('vendor.pagination.default') }}
+					
 @endsection

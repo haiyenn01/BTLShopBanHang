@@ -27,5 +27,5 @@
                         </a>
                        @endforeach
 					</div>
-					{{ $category_by_id->render() }}
+					{{ $category_by_id->links('vendor.pagination.default') }}
 @endsection
