@@ -249,18 +249,17 @@
         }
         
         .item-image {
-            max-width: 8.5rem;
             margin-right: .5rem;
             border-radius: 4px;
             cursor: pointer;
             -o-object-fit: cover;
             object-fit: cover;
-            height: 8.5rem;
-            width: 8.5rem;
+            height: 100%;
+            width: 12rem;
         }
         
         .item-name a {
-            font-size: 1.1rem;
+            font-size: 2.1rem;
             font-weight: 400;
             color: #595d6e;
             text-decoration: unset;
@@ -336,9 +335,24 @@
 					<div class="col-sm-8">
 						<div class="shop-menu pull-right">
 							<ul class="nav navbar-nav">
-								<li><a href="{{URL::to('/login-checkout')}}"><i class="fa fa-user"></i> Tài khoản</a></li>
-								<li><a href="#"><i class="fa fa-star"></i> Yêu thích</a></li>
+                                <?php
+                                    $customer_id = Session::get('customer_id');
+                                    $shipping_id = Session::get('shipping_id');
+                                    if($customer_id != NULL && $shipping_id == NULL){
+                                ?>
 								<li><a href="{{URL::to('/checkout')}}"><i class="fa fa-crosshairs"></i> Thanh toán</a></li>
+                                <?php
+                                    }elseif($customer_id != NULL && $shipping_id != NULL){
+                                ?>
+								<li><a href="{{URL::to('/payment')}}"><i class="fa fa-crosshairs"></i> Thanh toán</a></li>
+                                <?php
+                                    }else{
+                                ?>
+                                <li><a href="{{URL::to('/login-checkout')}}"><i class="fa fa-user"></i> Tài khoản</a></li>
+                                <?php
+                                    }
+                                ?>
+                                
 								<li><a href="{{URL::to('/show-cart')}}"></i> Giỏ hàng</a></li>
 								<?php
                                     $customer_id =Session::get('customer_id');
@@ -376,19 +390,8 @@
 						<div class="mainmenu pull-left">
 							<ul class="nav navbar-nav collapse navbar-collapse">
 								<li><a href="{{URL::to('/trang-chu')}}" class="active">Trang chủ</a></li>
-								<li class="dropdown"><a href="#">Sản phẩm<i class="fa fa-angle-down"></i></a>
-                                    <ul role="menu" class="sub-menu">
-                                        <li><a href="shop.html">Sản phẩm</a></li>
-										<li><a href="product-details.html">Product Details</a></li> 
-										<li><a href="checkout.html">Checkout</a></li> 
-										<li><a href="cart.html">Cart</a></li> 
-										<li><a href="login.html">Login</a></li> 
-                                    </ul>
-                                </li> 
-								<li ><a href="#">Tin Tức</a>
-                                </li>
-								<li><a href="404.html">Giỏ hàng</a></li>
-								<li><a href="contact-us.html">Liên hệ</a></li>
+								<li><a href="{{URL::to('/show-cart')}}"></i> Giỏ hàng</a></li>
+								<li><a href="contact-us.html">Liên hệ</a></li> 
 							</ul>
 						</div>
 					</div>
@@ -599,8 +602,7 @@
 		<div class="footer-bottom">
 			<div class="container">
 				<div class="row">
-					<p class="pull-left">Copyright © 2013 E-SHOPPER Inc. All rights reserved.</p>
-					<p class="pull-right">Designed by <span><a target="_blank" href="http://www.themeum.com">Themeum</a></span></p>
+					<p style="text-align:center;">Copyright © 2020 UTC STUDENTS. All rights reserved .</p>
 				</div>
 			</div>
 		</div>

@@ -18,14 +18,6 @@
 										  <a href=""><img src="{{URL::to('public/upload/product/images/similar3.jpg')}}" alt=""></a>
 										</div>
 									</div>
-
-								  <!-- Controls -->
-								  <a class="left item-control" href="#similar-product" data-slide="prev">
-									<i class="fa fa-angle-left"></i>
-								  </a>
-								  <a class="right item-control" href="#similar-product" data-slide="next">
-									<i class="fa fa-angle-right"></i>
-								  </a>
 							</div>
 
 						</div>
@@ -43,7 +35,7 @@
 									<label>Số lượng :</label>
 									<input name="qty" type="number" min="1" value="1" />
 									<input name="productid_hidden" type="hidden"  value="{{$value->product_id}}" />
-									<button type="submit" class="btn btn-fefault cart">
+									<button type="submit" class="btn btn-fefault cart" style="background-color: #FE980F;>
 										<i class="fa fa-shopping-cart"></i>
 										Thêm giỏ hàng
 									</button>
@@ -136,12 +128,6 @@
 								@endforeach
 								</div>
 							</div>
-							 <a class="left recommended-item-control" href="#recommended-item-carousel" data-slide="prev">
-								<i class="fa fa-angle-left"></i>
-							  </a>
-							  <a class="right recommended-item-control" href="#recommended-item-carousel" data-slide="next">
-								<i class="fa fa-angle-right"></i>
-							  </a>			
 						</div>
 					</div><!--/recommended_items-->
 					{{ $relate->links('vendor.pagination.default') }}

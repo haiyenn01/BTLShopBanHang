@@ -1,7 +1,7 @@
 var map = new mapboxgl.Map({
     container: 'divMapId',
     center: [105.79930031798517, 21.02292215577198],
-    zoom: 9
+    zoom: 12
 });
 map.addControl(new mapboxgl.FullscreenControl());
 var maps = new mapboxgl.ekmap.TiledOSMapLayer().addTo(map);
@@ -11,7 +11,6 @@ toggleSidebar('left');
 var divData = document.getElementById('listData');
 $.get("http://localhost:8080/shopbanhanglaravel/public/fontend/js/dataFeature.json", function(response) {
     var data = response.features;
-    console.log(data)
     data.forEach(items => {
         new mapboxgl.Marker({
                 'color': 'red'
@@ -33,7 +32,7 @@ $.get("http://localhost:8080/shopbanhanglaravel/public/fontend/js/dataFeature.js
                 popup.remove();
             popup = new mapboxgl.Popup({ offset: 30, maxWidth: 500 })
                 .setLngLat(items.geometry.coordinates)
-                .setHTML("<h3>" + items.properties.description + "</h3>")
+                .setHTML("<h4>" + items.properties.title + "</h4>")
                 .addTo(map)
         }
 
@@ -42,7 +41,7 @@ $.get("http://localhost:8080/shopbanhanglaravel/public/fontend/js/dataFeature.js
                 popup.remove();
             popup = new mapboxgl.Popup({ offset: 30, maxWidth: 500 })
                 .setLngLat(items.geometry.coordinates)
-                .setHTML("<h3>" + items.properties.description + "</h3>")
+                .setHTML("<h4>" + items.properties.title + "</h4>")
                 .addTo(map)
         };
 
@@ -55,7 +54,7 @@ $.get("http://localhost:8080/shopbanhanglaravel/public/fontend/js/dataFeature.js
         image.height = 20;
         var a = document.createElement('a');
         a.className = 'col-form-label';
-        a.innerHTML = items.properties.description;
+        a.innerHTML = items.properties.title;
         a.href = "javascript:;";
         var div4 = document.createElement('div');
         div4.className = 'font-des';

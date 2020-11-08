@@ -2,6 +2,8 @@
 
 return [
 
+   
+
     /*
     |--------------------------------------------------------------------------
     | Default Mailer
@@ -12,6 +14,9 @@ return [
     | and used as needed; however, this mailer will be used by default.
     |
     */
+   
+
+
 
     'default' => env('MAIL_MAILER', 'smtp'),
 
@@ -34,10 +39,12 @@ return [
     */
 
     'mailers' => [
+        
+
         'smtp' => [
             'transport' => 'smtp',
-            'host' => env('MAIL_HOST', 'smtp.mailgun.org'),
-            'port' => env('MAIL_PORT', 587),
+            'host' => env('MAIL_HOST', 'smtp.googlemail.com'),
+            'port' => env('MAIL_PORT', 465),
             'encryption' => env('MAIL_ENCRYPTION', 'tls'),
             'username' => env('MAIL_USERNAME'),
             'password' => env('MAIL_PASSWORD'),
@@ -84,8 +91,8 @@ return [
     */
 
     'from' => [
-        'address' => env('MAIL_FROM_ADDRESS', 'hello@example.com'),
-        'name' => env('MAIL_FROM_NAME', 'Example'),
+        'address' => env('MAIL_FROM_ADDRESS', 'Loginyen99@gmail.com'),
+        'name' => env('MAIL_FROM_NAME', 'Hai Yen BUFF'),
     ],
 
     /*

@@ -1,10 +1,9 @@
 {
   "ExpandedNodes": [
     "",
-    "\\app",
-    "\\app\\Http",
-    "\\app\\Http\\Controllers",
-    "\\database",
+    "\\public",
+    "\\public\\fontend",
+    "\\public\\fontend\\js",
     "\\resources",
     "\\resources\\views",
     "\\resources\\views\\admin",
@@ -12,6 +11,6 @@
     "\\resources\\views\\pages\\cart",
     "\\resources\\views\\pages\\category"
   ],
-  "SelectedNode": "\\app\\Http\\Controllers\\CategoryProduct.php",
+  "SelectedNode": "\\public\\fontend\\js\\MapBox.js",
   "PreviewInSolutionExplorer": false
 }

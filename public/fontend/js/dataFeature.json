@@ -11,53 +11,83 @@
             },
             "properties": {
                 "image": "https://fptshop.com.vn/Content/images/shopImg/cuahang-1.jpg",
-                "title": "Eshop",
-                "description": "99 Nguyễn Chí Thanh, Đống Đa, Hà Nội"
+                "title": "FPTSHOP CƠ SỞ 1 ",
+                "description": "<p></p><ul><li><b>Địa điểm: 99 Nguyễn Chí Thanh, Đống Đa, Hà Nội</b></li><li><b>Quản lý:MR BUFF</b></li><li><b>Giờ mở cửa :08h00 ->22h00 </b></li><li><b> Hotline : 1800 6601  </b></li></ul><p></p><p></p>"
             }
         },
         {
             "type": "Feature",
             "geometry": {
                 "type": "Point",
-                "coordinates": [106.836729, 21.0501315],
+                "coordinates": [105.8181237, 21.0126966],
                 "zoom": 13.5,
                 "bearing": 27,
                 "pitch": 45
             },
             "properties": {
                 "image": "https://i.ndh.vn/2012/09/05/4519585-1346809740.jpg",
-                "title": "Eshop",
-                "description": "210 Thái Hà , Đống Đa , Hà Nội"
+                "title": "FPTSHOP CƠ SỞ 2",
+                "description": "<p></p><ul><li><b>Địa điểm: 216 Thái Hà, Trung Liệt, Đống Đa, Hà Nội</b></li><li><b>Quản lý:MR Yên</b></li><li><b>Giờ mở cửa :08h00 ->22h00 </b></li><li><b> Hotline : 1800 6601  </b></li></ul><p></p><p></p>"
             }
         },
         {
             "type": "Feature",
             "geometry": {
                 "type": "Point",
-                "coordinates": [105.760174, 21.002302],
+                "coordinates": [105.8172224, 21.012441],
                 "zoom": 14.7,
                 "bearing": 180,
                 "pitch": 60
             },
             "properties": {
                 "image": "https://fptshop.com.vn/Uploads/images/huypv4/FPT%20Shop%20Ninh%20Thuan.jpg",
-                "title": "Eshop",
-                "description": "56 Tạ Quang Bửu, Hai Bà Trưng, Hà Nội"
+                "title": "FPTSHOP CƠ SỞ 3",
+                "description": "<p></p><ul><li><b>Địa điểm: 20 Phố Đông Các, Đống Đa, Hà Nội</b></li><li><b>Quản lý:MR Phong</b></li><li><b>Giờ mở cửa :08h00 ->22h00 </b></li><li><b> Hotline : 1800 6601  </b></li></ul><p></p><p></p>"
             }
         },
         {
             "type": "Feature",
             "geometry": {
                 "type": "Point",
-                "coordinates": [105.720363, 20.999044],
+                "coordinates": [105.7939543, 21.0081143],
                 "zoom": 15.2,
                 "bearing": 90,
                 "pitch": 40
             },
             "properties": {
                 "image": "https://diadiemnghean.com/wp-content/uploads/2018/07/FPTshop-cau-giat.jpg",
-                "title": "Eshop",
-                "description": "3 Cầu Giấy, Đống Đa, Hà Nội"
+                "title": "FPTSHOP CƠ SỞ 4 ",
+                "description": "<p></p><ul><li><b>Địa điểm: Ngõ 33 Tạ Quang Bửu, Bách Khoa, Hai Bà Trưng, Hà Nội</b></li><li><b>Quản lý:MR TUAN</b></li><li><b>Giờ mở cửa :08h00 ->22h00 </b></li><li><b> Hotline : 1800 6601  </b></li></ul><p></p><p></p>"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [105.8706693, 20.9948089],
+                "zoom": 15.2,
+                "bearing": 90,
+                "pitch": 40
+            },
+            "properties": {
+                "image": "https://diadiemnghean.com/wp-content/uploads/2018/07/FPTshop-cau-giat.jpg",
+                "title": "FPTSHOP CƠ SỞ 5 ",
+                "description": "<p></p><ul><li><b>Địa điểm: 18/84/255 Lĩnh Nam, Vĩnh Hưng, Hoàng Mai, Hà Nội</b></li><li><b>Quản lý:MR NAM</b></li><li><b>Giờ mở cửa :08h00 ->22h00 </b></li><li><b> Hotline : 1800 6601  </b></li></ul><p></p><p></p>"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [105.8706693, 20.9948089],
+                "zoom": 15.2,
+                "bearing": 90,
+                "pitch": 40
+            },
+            "properties": {
+                "image": "https://diadiemnghean.com/wp-content/uploads/2018/07/FPTshop-cau-giat.jpg",
+                "title": "FPTSHOP CƠ SỞ 6 ",
+                "description": "<p></p><ul><li><b>Địa điểm: 350 Đ. Minh Khai, Vĩnh Tuy, Hai Bà Trưng, Hà Nội, Việt Nam</b></li><li><b>Quản lý:MR DUY</b></li><li><b>Giờ mở cửa :08h00 ->22h00 </b></li><li><b> Hotline : 1800 6601  </b></li></ul><p></p><p></p>"
             }
         }
     ]

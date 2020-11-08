@@ -83,4 +83,7 @@ Route::post('/add-customer','App\Http\Controllers\CheckoutController@add_custome
 Route::post('/login-customer','App\Http\Controllers\CheckoutController@login_customer');
 Route::get('/checkout','App\Http\Controllers\CheckoutController@checkout');
 Route::post('/save-checkout-customer','App\Http\Controllers\CheckoutController@save_checkout_customer');
+Route::get('/payment','App\Http\Controllers\CheckoutController@payment');
+Route::post('/order-place','App\Http\Controllers\CheckoutController@order_place');
 
+// send mail

@@ -17,12 +17,6 @@
 							</button>
 						</div>
 					</div>
-					<div class="choose">
-						<ul class="nav nav-pills nav-justified">
-							<li><a href="#"><i class="fa fa-plus-square"></i>yêu thích</a></li>
-							<li><a href="#"><i class="fa fa-plus-square"></i>so sánh</a></li>
-						</ul>
-					</div>
 				</div>
 			</div>
 			</a>
