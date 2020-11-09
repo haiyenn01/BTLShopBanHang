@@ -6,7 +6,6 @@
 						<div class="col-sm-5">
 							<div class="view-product">
 								<img src="{{URL::to('public/upload/product/'.$value->product_image)}}" alt="" />
-								<h3>ZOOM</h3>
 							</div>
 							<div id="similar-product" class="carousel slide" data-ride="carousel">
 								

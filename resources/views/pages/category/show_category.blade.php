@@ -13,7 +13,8 @@
 											<img src="{{URL::to('public/upload/product/'.$product->product_image)}}" alt="" />
 											<h2>{{number_format($product->product_price).' '.'VND'}}</h2>
 											<p>{{$product->product_name}}</p>
-											<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Thêm giỏ hàng</a>
+											<button style="background-color: #FE980F" type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Thêm giỏ hàng</button>
+											<!-- <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Thêm giỏ hàng</a> -->
 										</div>
 								</div>
 							</div>

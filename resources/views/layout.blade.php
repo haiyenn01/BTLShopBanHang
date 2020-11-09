@@ -532,11 +532,59 @@
 				</div>
 				</div>
 			</div>
-		</div>
+        </div>
+        
 		<div class="footer-widget">
 			<div class="container">
 				<div class="row">
-					<div class="col-sm-2">
+                    <div class="col-md-3">
+                    <div class="single-widget">
+							<h2>Về chúng tôi</h2>
+							<ul class="nav nav-pills nav-stacked">
+								<li><a href="#">Liên hệ </a></li>
+                                <li><a href="#">tin tức</a></li>
+								<li><a href="#">Giới thiệu</a></li>
+								<li><a href="#">Đăng nhập</a></li>
+							</ul>
+						</div>
+                    </div>
+                    <div class="col-md-3">
+                    <div class="single-widget">
+							<h2>Thông tin chung</h2>
+							<ul class="nav nav-pills nav-stacked">
+								<li><a href="#">Online Help</a></li>
+								<li><a href="#">Contact Us</a></li>
+								<li><a href="#">Order Status</a></li>
+								<li><a href="#">Change Location</a></li>
+								<li><a href="#">FAQ’s</a></li>
+							</ul>
+						</div>
+                    </div>
+                    <div class="col-md-3">
+                    <div class="single-widget">
+							<h2>Service</h2>
+							<ul class="nav nav-pills nav-stacked">
+								<li><a href="#">Online Help</a></li>
+								<li><a href="#">Contact Us</a></li>
+								<li><a href="#">Order Status</a></li>
+								<li><a href="#">Change Location</a></li>
+								<li><a href="#">FAQ’s</a></li>
+							</ul>
+						</div>
+                    </div>
+                    <div class="col-md-3">
+                    <div class="single-widget">
+							<h2>Service</h2>
+							<ul class="nav nav-pills nav-stacked">
+								<li><a href="#">Online Help</a></li>
+								<li><a href="#">Contact Us</a></li>
+								<li><a href="#">Order Status</a></li>
+								<li><a href="#">Change Location</a></li>
+								<li><a href="#">FAQ’s</a></li>
+							</ul>
+						</div>
+                    </div>
+					<!-- <div class="col-sm-2">
 						<div class="single-widget">
 							<h2>Service</h2>
 							<ul class="nav nav-pills nav-stacked">
@@ -593,7 +641,7 @@
 								<p>Get the most recent updates from <br />our site and be updated your self...</p>
 							</form>
 						</div>
-					</div>
+					</div> -->
 					
 				</div>
 			</div>

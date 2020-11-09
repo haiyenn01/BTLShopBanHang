@@ -87,3 +87,4 @@ Route::get('/payment','App\Http\Controllers\CheckoutController@payment');
 Route::post('/order-place','App\Http\Controllers\CheckoutController@order_place');
 
 // send mail
+Route::get('/send-mail','App\Http\Controllers\MailController@sendEmail');
