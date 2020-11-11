@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Test mail</title>
+    <title>Real Programmer</title>
 </head>
 <body>
     <h1>{{ $details['title'] }}</h1>

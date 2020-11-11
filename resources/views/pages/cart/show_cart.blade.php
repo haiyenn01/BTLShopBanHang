@@ -77,7 +77,7 @@
 							<li>Phí vận chuyển <span>Free</span></li>
 							<li>Thành tiền <span>{{Cart::subtotal().' '.'vnđ'}}</span></li>
 						</ul>
-							<a class="btn btn-default check_out" href="{{URL::to('/login-checkout')}}">Thanh toán</a>
+							<a style="background-color: #FE980F;" class="btn btn-default check_out" href="{{URL::to('/login-checkout')}}">Thanh toán</a>
 					</div>
 				</div>
 			</div>

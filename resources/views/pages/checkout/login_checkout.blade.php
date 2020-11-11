@@ -5,7 +5,7 @@
 			<div class="row">
 				<div class="col-sm-4 col-sm-offset-1">
 					<div class="login-form"><!--login form-->
-						<h2>Đăng nhập tài khoản của bạn</h2>
+						<h2 style="color: blue;">Đăng nhập tài khoản của bạn</h2>
 						<form action="{{URL::to('/login-customer')}}" method="POST">
 							{{csrf_field()}}	
 						<input type="text" name="email_account" placeholder="Tên tài khoản" />
@@ -23,7 +23,7 @@
 				</div>
 				<div class="col-sm-4">
 					<div class="signup-form"><!--sign up form-->
-						<h2>Đăng kí tài khoản mới</h2>
+						<h2  style="color: blue;">Đăng kí tài khoản mới</h2>
 						<form action="{{URL::to('/add-customer')}}" method="POST">
                             {{ csrf_field() }}
 							<input type="text" name="customer_name" placeholder="Họ và tên"/>

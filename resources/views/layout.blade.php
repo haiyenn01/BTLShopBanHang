@@ -14,7 +14,9 @@
 	<link href="{{asset('public/fontend/css/main.css')}}" rel="stylesheet">
 	<link href="{{asset('public/fontend/css/responsive.css')}}" rel="stylesheet">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
+    <link rel="stylesheet" href="{{asset('public/fontend/css/font.css" type="text/css')}}"/>
+    <link href="{{asset('public/fontend/css/font-awesome.css')}}" rel="stylesheet"> 
+    <link rel="stylesheet" href="{{asset('public/fontend/css/morris.css')}}" type="text/css"/>
     <script src="https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.js"></script>
     <link href="https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css" rel="stylesheet" />
     <link rel="shortcut icon" href="{{{'public/fontend/images/ico/favicon.ico'}}}">
@@ -475,7 +477,7 @@
 							<div class="brands-name">
 								<ul class="nav nav-pills nav-stacked">
                                 @foreach($brand as $key =>$brand)
-									<li><a href="{{URL::to('/thuong-hieu-san-pham/'.$brand->brand_id)}}"> <span class="pull-right">(50)</span>{{$brand->brand_name}}</a></li>
+									<li><a href="{{URL::to('/thuong-hieu-san-pham/'.$brand->brand_id)}}"> {{$brand->brand_name}}</a></li>
                                 @endforeach
                                 </ul>
 							</div>
@@ -552,38 +554,37 @@
                     <div class="single-widget">
 							<h2>Thông tin chung</h2>
 							<ul class="nav nav-pills nav-stacked">
-								<li><a href="#">Online Help</a></li>
-								<li><a href="#">Contact Us</a></li>
-								<li><a href="#">Order Status</a></li>
-								<li><a href="#">Change Location</a></li>
-								<li><a href="#">FAQ’s</a></li>
+								<li><a href="#">Chính sách bảo hành</a></li>
+								<li><a href="#">Chính sách đổi trả</a></li>
+								<li><a href="#">Chính sách bảo mật</a></li>
+								<li><a href="#">Hướng dẫn đặt hàng</a></li>
+								<li><a href="#">Góp ý, khiếu nại</a></li>
 							</ul>
 						</div>
                     </div>
                     <div class="col-md-3">
-                    <div class="single-widget">
-							<h2>Service</h2>
-							<ul class="nav nav-pills nav-stacked">
-								<li><a href="#">Online Help</a></li>
-								<li><a href="#">Contact Us</a></li>
-								<li><a href="#">Order Status</a></li>
-								<li><a href="#">Change Location</a></li>
-								<li><a href="#">FAQ’s</a></li>
-							</ul>
+						<div class="single-widget">
+							<h2>Quock Shop</h2>
+							<div class="row">
+                                <div class="col-md-4" style="width: 28px;"><a href="#"><i class="fa fa-instagram"></i></a></div>
+                                <div class="col-md-4" style="width: 28px;"><a href="https://www.facebook.com/H%E1%BA%A3i-Y%C3%AAn-Shop-105657694691240"><i class="fa fa-facebook-square"></i></a></div>
+                                <div class="col-md-4"style="width: 28px;"><a href="#"><i class="fa fa-youtube-play"></i></a></div>
+                            </div>
+                            <div class="row">
+                                <img src="{{URL::to('public/fontend/images/bct.png')}}" style="width: 200px;height: 100px;">
+                            </div>
 						</div>
-                    </div>
+					</div>
                     <div class="col-md-3">
-                    <div class="single-widget">
-							<h2>Service</h2>
-							<ul class="nav nav-pills nav-stacked">
-								<li><a href="#">Online Help</a></li>
-								<li><a href="#">Contact Us</a></li>
-								<li><a href="#">Order Status</a></li>
-								<li><a href="#">Change Location</a></li>
-								<li><a href="#">FAQ’s</a></li>
-							</ul>
+						<div class="single-widget">
+							<h2>About Shopper</h2>
+							<form action="#" class="searchform">
+								<input type="text" placeholder="Your email address" />
+								<button type="submit" class="btn btn-default"><i class="fa fa-arrow-circle-o-right"></i></button>
+								<p>Get the most recent updates from <br />our site and be updated your self...</p>
+							</form>
 						</div>
-                    </div>
+					</div> 
 					<!-- <div class="col-sm-2">
 						<div class="single-widget">
 							<h2>Service</h2>
@@ -665,6 +666,29 @@
 	<script src="{{asset('public/fontend/js/price-range.js')}}"></script>
     <script src="{{asset('public/fontend/js/jquery.prettyPhoto.js')}}"></script>
     <script src="{{asset('public/fontend/js/main.js')}}"></script>
-	<script src="{{asset('public/fontend/js/MapBox.js')}}"></script>
+    <script src="{{asset('public/fontend/js/MapBox.js')}}"></script>
+    <!-- Load Facebook SDK for JavaScript -->
+    <div id="fb-root"></div>
+      <script>
+        window.fbAsyncInit = function() {
+          FB.init({
+            xfbml            : true,
+            version          : 'v8.0'
+          });
+        };
+
+        (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = 'https://connect.facebook.net/vi_VN/sdk/xfbml.customerchat.js';
+        fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));</script>
+
+      <!-- Your Chat Plugin code -->
+      <div class="fb-customerchat"
+        attribution=install_email
+        page_id="105657694691240">
+      </div>
 </body>
 </html>
