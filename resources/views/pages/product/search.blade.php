@@ -8,7 +8,7 @@
 				<div class="product-image-wrapper">
 					<div class="single-products">
 						<div class="productinfo text-center">
-							<img src="{{URL::to('public/upload/product/'.$product->product_image)}}" alt="" />
+							<img src="{{URL::to('public/upload/product/'.$product->product_image)}}" alt="" height="250" width="150" />
 							<h2>{{number_format($product->product_price).' '.'VND'}}</h2>
 							<p>{{$product->product_name}}</p>
 							<button type="submit" class="btn btn-fefault cart">

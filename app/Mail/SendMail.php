@@ -11,15 +11,17 @@ class SendMail extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public $details;
+    public $order;
+    public $orderDetails;
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($details)
+    public function __construct($order,$orderDetails)
     {
-        $this->details = $details;
+        $this->order = $order;
+        $this->orderDetails = $orderDetails;
     }
 
     /**
@@ -29,7 +31,7 @@ class SendMail extends Mailable
      */
     public function build()
     {
-        return $this->subject('Mail from Real Programmer')
+        return $this->subject('Mail from FPTshop')
         ->view('emails.sendmail');
     }
 }

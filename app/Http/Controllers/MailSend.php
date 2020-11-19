@@ -10,13 +10,7 @@ class MailSend extends Controller
 {
     public function mailsend()
     {
-        $details = [
-            'title' => 'Title: Mail from Real Programmer',
-            'body' => 'Body: This is for testing email using smtp'
-        ];
-
-        Mail::to('dohaiyen0306@gmail.com')->send(new SendMail($details));
-        return view('emails.thanks');
+        
     }
 }
 

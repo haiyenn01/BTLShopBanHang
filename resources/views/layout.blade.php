@@ -29,7 +29,10 @@
 						<link href='https://api.mapbox.com/mapbox-gl-js/v1.11.1/mapbox-gl.css' rel='stylesheet' />
 						<script src="https://ekmap.github.io/ekmap-client/dist/mapboxgl/ekmap-mapboxgl.js"></script>
 						<script src="https://ekmap.github.io/ekmap-client/examples/js/common.js"></script>
-						
+                        {{-- jQuery slide --}}
+    <link rel="stylesheet" href="{{asset('public/fontend/css/lightgallery.min.css')}}">
+    <link rel="stylesheet" href="{{asset('public/fontend/css/lightslider.css')}}">
+    <link rel="stylesheet" href="{{asset('public/fontend/css/prettify.css')}}">				
 </head><!--/head-->
 <style>
     #divMap{
@@ -355,7 +358,6 @@
                                     }
                                 ?>
                                 
-								<li><a href="{{URL::to('/show-cart')}}"></i> Giỏ hàng</a></li>
 								<?php
                                     $customer_id =Session::get('customer_id');
                                     if($customer_id!=NULL){
@@ -667,6 +669,10 @@
     <script src="{{asset('public/fontend/js/jquery.prettyPhoto.js')}}"></script>
     <script src="{{asset('public/fontend/js/main.js')}}"></script>
     <script src="{{asset('public/fontend/js/MapBox.js')}}"></script>
+       <!-- jQuery slider -->
+       <script src="{{asset('public/fontend/js/lightgallery-all.min.js')}}"></script>
+    <script src="{{asset('public/fontend/js/lightslider.js')}}"></script>
+
     <!-- Load Facebook SDK for JavaScript -->
     <div id="fb-root"></div>
       <script>
@@ -690,5 +696,24 @@
         attribution=install_email
         page_id="105657694691240">
       </div>
+       <!-- Gallert   -->
+    <script>
+    $(document).ready(function() {
+        $('#imageGallery').lightSlider({
+            gallery: true,
+            item: 1,
+            loop: true,
+            thumbItem: 6,
+            slideMargin: 0,
+            enableDrag: false,
+            currentPagerPosition: 'left',
+            onSliderLoad: function(el) {
+                el.lightGallery({
+                    selector: '#imageGallery .lslide'
+                });
+            }
+        });
+    });
+    </script>
 </body>
 </html>

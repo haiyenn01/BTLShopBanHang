@@ -66,6 +66,9 @@ Route::get('/active-product/{product_id}','App\Http\Controllers\ProductControlle
 Route::post('/save-product','App\Http\Controllers\ProductController@save_product');
 Route::post('/update-product/{product_id}','App\Http\Controllers\ProductController@update_product');
 
+// counpon
+Route::post('/check-coupon','App\Http\Controllers\CartController@check_coupon');
+
 
 //cart
 Route::post('/save-cart','App\Http\Controllers\CartController@save_cart');

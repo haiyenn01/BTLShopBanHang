@@ -8,10 +8,10 @@
 				<div class="product-image-wrapper">
 					<div class="single-products">
 						<div class="productinfo text-center">
-							<img src="{{URL::to('public/upload/product/'.$product->product_image)}}" height="250" alt="" />
+							<img src="{{URL::to('public/upload/product/'.$product->product_image)}}" height="250" width="350" alt="" />
 							<h2>{{number_format($product->product_price).' '.'VND'}}</h2>
 							<p>{{$product->product_name}}</p>
-							<button type="submit" class="btn btn-fefault cart" style="background-color: #FE980F;>
+							<button type="submit" class="btn btn-fefault cart" style="background-color: #FE980F;">
 										<i class="fa fa-shopping-cart"></i>
 										Thêm giỏ hàng
 							</button>

@@ -9,7 +9,7 @@ map.addControl(new mapboxgl.NavigationControl(), "bottom-right");
 var popup;
 toggleSidebar('left');
 var divData = document.getElementById('listData');
-$.get("http://localhost:8080/shopbanhanglaravel/public/fontend/js/dataFeature.json", function(response) {
+$.get("http://localhost:8080/public/fontend/js/dataFeature.json", function(response) {
     var data = response.features;
     data.forEach(items => {
         new mapboxgl.Marker({

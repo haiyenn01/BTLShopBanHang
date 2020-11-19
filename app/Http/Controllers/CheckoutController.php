@@ -7,10 +7,13 @@ use DB;
 use Session;
 use Cart;
 use Shipping;
+use App\Mail\SendMail;
+use Mail;
 use Illuminate\support\Facades\Redirect;
 session_start();
 class CheckoutController extends Controller
-{
+{   
+    public $emails ;
     public function login_checkout(){
       $cate_product = DB::table('tbl_category_product')->where('category_status','0')->orderby('category_id','desc')->get();
       $brand_product = DB::table('tbl_brand')->where('brand_status','0')->orderby('brand_id','desc')->get();
@@ -23,7 +26,7 @@ class CheckoutController extends Controller
         $data['customer_name'] = $request->customer_name;
         $data['customer_email'] = $request->customer_email;
         $data['customer_password'] = md5($request->customer_password);
-
+       
         $customer_id = DB::table('tbl_customers')->insertGetId($data);
         Session::put('customer_id',$customer_id);
         Session::put('customer_name',$request->customer_name);
@@ -36,13 +39,13 @@ class CheckoutController extends Controller
       return view('pages.checkout.show_checkout')->with('category', $cate_product)->with('brand',$brand_product);
     }
     public function save_checkout_customer(Request $request){
+      
         $data = array();
         $data['shipping_name'] = $request->shipping_name;
         $data['shipping_phone'] = $request->shipping_phone;
         $data['shipping_email'] = $request->shipping_email;
         $data['shipping_notes'] = $request->shipping_notes;
         $data['shipping_address'] = $request->shipping_address;
-
         $shipping_id = DB::table('tbl_shipping')->insertGetId($data);
         Session::put('shipping_id',$shipping_id);
         return Redirect::to('/payment');
@@ -54,12 +57,6 @@ class CheckoutController extends Controller
       
     }
     public function order_place(Request $request){
-      //insert payment_method
-      $meta_desc = "Đăng nhập thanh toán"; 
-      $meta_keywords = "Đăng nhập thanh toán";
-      $meta_title = "Đăng nhập thanh toán";
-      $url_canonical = $request->url();
-      //--seo 
       $data = array();
       $data['payment_method'] = $request->payment_option;
       $data['payment_status'] = 'Đang chờ xử lý';
@@ -74,7 +71,10 @@ class CheckoutController extends Controller
       $order_data['order_status'] = 'Đang chờ xử lý';
       $order_id = DB::table('tbl_order')->insertGetId($order_data);
 
+      
       //insert order_details
+      $customer_id = Session::get('customer_id');
+      $shipping_id = Session::get('shipping_id');
       $content = Cart::content();
       foreach($content as $v_content){
           $order_d_data['order_id'] = $order_id;
@@ -83,24 +83,26 @@ class CheckoutController extends Controller
           $order_d_data['product_price'] = $v_content->price;
           $order_d_data['product_sales_quantity'] = $v_content->qty;
           DB::table('tbl_order_detail')->insert($order_d_data);
-      }
-      if($data['payment_method']==1){
-
-          echo 'Thanh toán thẻ ATM';
-
-      }elseif($data['payment_method']==2){
-          Cart::destroy();
-
-          $cate_product = DB::table('tbl_category_product')->where('category_status','0')->orderby('category_id','desc')->get();
-          $brand_product = DB::table('tbl_brand')->where('brand_status','0')->orderby('brand_id','desc')->get(); 
-          return view('pages.checkout.handcash')->with('category',$cate_product)->with('brand',$brand_product)->with('meta_desc',$meta_desc)->with('meta_keywords',$meta_keywords)->with('meta_title',$meta_title)->with('url_canonical',$url_canonical);
-
-      }else{
-          echo 'Thẻ ghi nợ';
 
       }
       
-      //return Redirect::to('/payment');
+      if($data['payment_method']==1){
+        return view('emails.thanks');
+      }elseif($data['payment_method']==2){
+        $customer = DB::table('tbl_customers')->where('customer_id',$customer_id)->first();
+        $shipping = DB::table('tbl_shipping')->where('shipping_id',$shipping_id)->first();
+        $order_data['id'] =  $order_id;
+        $order_data['date'] = date("Y-m-d H:i:s");
+        $order_data['name'] = $customer->customer_name;
+        $order_data['address'] = $shipping->shipping_address;
+        $order_data['phone'] = $shipping->shipping_phone;
+        $order_data['notes'] = $shipping->shipping_notes;
+        Mail::to($customer->customer_email)->send(new SendMail($order_data,$content));
+        Cart::destroy();
+        return view('emails.thanks');
+      }else{
+          echo 'Thẻ ghi nợ';
+      }
   }
 
     public function logout_checkout(){
